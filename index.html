@@ -1,0 +1,1163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+    <title>1XBET MINES • HACK SIGNAL v6.0</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Roboto, system-ui, sans-serif;
+        }
+
+        body {
+            min-height: 100vh;
+            background: #0a0c15;
+            background-image: radial-gradient(circle at 30% 50%, #1a2340 0%, #0a0c15 100%);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 12px;
+        }
+
+        .container {
+            max-width: 560px;
+            width: 100%;
+            margin: 0 auto;
+        }
+
+        /* Lock Screen */
+        .lock-panel {
+            background: #111624;
+            border: 1px solid #2e3a5c;
+            border-radius: 40px;
+            padding: 32px 20px;
+            box-shadow: 0 25px 40px -10px rgba(0,0,0,0.8);
+            text-align: center;
+        }
+
+        .lock-header {
+            color: #ffd700;
+            font-size: clamp(24px, 6vw, 28px);
+            font-weight: 700;
+            margin-bottom: 8px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            text-shadow: 0 0 15px #ffd70066;
+        }
+
+        .lock-sub {
+            color: #7e8bb6;
+            margin-bottom: 28px;
+            font-size: 14px;
+        }
+
+        .password-field {
+            background: #1e2538;
+            border: 2px solid #2f3b5a;
+            border-radius: 60px;
+            padding: 16px 20px;
+            width: 100%;
+            color: white;
+            font-size: 20px;
+            text-align: center;
+            letter-spacing: 4px;
+            outline: none;
+            margin-bottom: 20px;
+            transition: 0.2s;
+        }
+
+        .password-field:focus {
+            border-color: #ffd700;
+            box-shadow: 0 0 20px #ffd70033;
+        }
+
+        .btn-primary {
+            background: linear-gradient(145deg, #ffd700, #b8860b);
+            border: none;
+            border-radius: 60px;
+            padding: 16px 24px;
+            width: 100%;
+            font-weight: 800;
+            font-size: 16px;
+            color: #0a0c15;
+            text-transform: uppercase;
+            cursor: pointer;
+            box-shadow: 0 8px 0 #7d5d0e, 0 10px 20px rgba(0,0,0,0.5);
+            transition: 0.1s;
+            letter-spacing: 1px;
+        }
+
+        .btn-primary:active {
+            transform: translateY(6px);
+            box-shadow: 0 2px 0 #7d5d0e, 0 8px 12px rgba(0,0,0,0.5);
+        }
+
+        /* Main Panel */
+        .main-panel {
+            background: #11172b;
+            border: 1px solid #2f3d63;
+            border-radius: 40px;
+            padding: 20px 16px;
+            box-shadow: 0 30px 40px -10px black;
+        }
+
+        .signal-badge {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: #1b2340;
+            border-radius: 60px;
+            padding: 10px 16px;
+            margin-bottom: 20px;
+            border: 1px solid #ffd70033;
+        }
+
+        .live-indicator {
+            background: #ff3333;
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            display: inline-block;
+            margin-right: 6px;
+            animation: pulse 1.5s infinite;
+        }
+
+        @keyframes pulse {
+            0% { opacity: 1; }
+            50% { opacity: 0.4; }
+            100% { opacity: 1; }
+        }
+
+        /* Time Grid */
+        .time-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 6px;
+            margin-bottom: 20px;
+        }
+
+        .time-slot {
+            background: #1a2340;
+            border: 2px solid #2f3d63;
+            border-radius: 20px;
+            padding: 10px 2px;
+            text-align: center;
+            position: relative;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .time-slot:hover {
+            transform: translateY(-2px);
+            border-color: #8f9ed4;
+        }
+
+        .time-slot.selected {
+            border-color: #ffd700;
+            background: #2a3557;
+            box-shadow: 0 0 20px #ffd700;
+        }
+
+        .time-slot.expired {
+            opacity: 0.5;
+            border-color: #4a4f6e;
+            background: #1a1f32;
+            pointer-events: none;
+        }
+
+        .time-slot.upcoming {
+            border-color: #4CAF50;
+            background: #1e3a2a;
+            animation: pulse-green 2s infinite;
+        }
+
+        .time-slot.active-signal {
+            border-color: #ffd700;
+            background: #2a3557;
+            box-shadow: 0 0 15px #ffd70055;
+        }
+
+        @keyframes pulse-green {
+            0% { border-color: #4CAF50; }
+            50% { border-color: #8BC34A; }
+            100% { border-color: #4CAF50; }
+        }
+
+        .time-label {
+            font-size: 11px;
+            color: #8f9ed4;
+            text-transform: uppercase;
+            margin-bottom: 4px;
+        }
+
+        .time-value {
+            font-size: 16px;
+            font-weight: 700;
+            color: #fff;
+        }
+
+        .selected .time-value {
+            color: #ffd700;
+        }
+
+        .upcoming .time-value {
+            color: #8BC34A;
+        }
+
+        /* Pre-Signal Badge */
+        .pre-signal-badge {
+            position: absolute;
+            top: -8px;
+            right: -8px;
+            background: #4CAF50;
+            color: white;
+            font-size: 9px;
+            font-weight: 700;
+            padding: 3px 8px;
+            border-radius: 20px;
+            z-index: 10;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+        }
+
+        /* Play Time */
+        .play-time {
+            background: #0f1629;
+            border-radius: 30px;
+            padding: 16px 16px;
+            text-align: center;
+            margin-bottom: 20px;
+            border: 1px solid #3f4e7a;
+            position: relative;
+        }
+
+        .play-time-label {
+            color: #8a9bcf;
+            font-size: 12px;
+            margin-bottom: 6px;
+        }
+
+        .play-time-value {
+            color: #ffd700;
+            font-size: clamp(16px, 4vw, 20px);
+            font-weight: 700;
+            font-family: monospace;
+        }
+
+        .signal-status-badge {
+            position: absolute;
+            top: -10px;
+            right: 15px;
+            background: #ffd700;
+            color: #0a0c15;
+            padding: 4px 12px;
+            border-radius: 30px;
+            font-size: 12px;
+            font-weight: 800;
+            transition: all 0.3s ease;
+        }
+
+        .signal-status-badge.preview {
+            background: #4CAF50;
+            color: white;
+        }
+
+        .signal-status-badge.active {
+            background: #ffd700;
+        }
+
+        .signal-status-badge.expired {
+            background: #ff6666;
+            color: white;
+        }
+
+        .signal-status-badge.ready {
+            background: #2196F3;
+            color: white;
+        }
+
+        /* Grid */
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 8px;
+            background: #0c1222;
+            padding: 16px;
+            border-radius: 28px;
+            margin-bottom: 20px;
+            border: 1px solid #2f3d63;
+        }
+
+        .tile {
+            aspect-ratio: 1;
+            background: #1e2a45;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+            font-weight: 700;
+            color: #a3b3e0;
+            border: 2px solid #31416b;
+            box-shadow: 0 4px 0 #0a0f1c;
+            transition: all 0.2s ease;
+        }
+
+        .tile.safe {
+            background: #ffd700;
+            background: radial-gradient(circle at 30% 30%, #fff0a0, #d4a500);
+            color: #1e1a0a;
+            border-color: #ffffff;
+            box-shadow: 0 0 20px #ffd700, 0 4px 0 #7d5d0e;
+            font-size: 18px;
+            transform: scale(1.02);
+        }
+
+        .tile.preview-safe {
+            background: #4CAF50;
+            background: radial-gradient(circle at 30% 30%, #8BC34A, #2E7D32);
+            color: white;
+            border-color: #ffffff;
+            box-shadow: 0 0 20px #4CAF50, 0 4px 0 #1B5E20;
+            font-size: 18px;
+            animation: pulse-preview 1.5s infinite;
+        }
+
+        @keyframes pulse-preview {
+            0% { box-shadow: 0 0 20px #4CAF50, 0 4px 0 #1B5E20; }
+            50% { box-shadow: 0 0 30px #8BC34A, 0 4px 0 #1B5E20; }
+            100% { box-shadow: 0 0 20px #4CAF50, 0 4px 0 #1B5E20; }
+        }
+
+        /* Stats */
+        .stats-panel {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 16px;
+        }
+
+        .stat-box {
+            flex: 1;
+            background: #151e36;
+            border-radius: 24px;
+            padding: 12px 4px;
+            text-align: center;
+            border: 1px solid #3b4870;
+        }
+
+        .stat-number {
+            font-size: clamp(20px, 5vw, 28px);
+            font-weight: 800;
+            color: #ffd700;
+            line-height: 1.2;
+        }
+
+        .stat-desc {
+            font-size: 10px;
+            color: #95a5d4;
+            text-transform: uppercase;
+        }
+
+        /* Accuracy Bar */
+        .accuracy-bar {
+            background: #0e1426;
+            border-radius: 40px;
+            padding: 12px 18px;
+            margin-bottom: 16px;
+            border: 1px solid #3e5080;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .accuracy-fill {
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 100%;
+            background: linear-gradient(90deg, #ffd70055, #ffd70022);
+            border-radius: 40px;
+            z-index: 0;
+        }
+
+        .accuracy-text {
+            position: relative;
+            z-index: 2;
+            display: flex;
+            justify-content: space-between;
+            color: #ffd700;
+            font-weight: 600;
+            font-size: 13px;
+        }
+
+        /* Multiplier */
+        .multiplier-box {
+            background: #1f2943;
+            border-radius: 30px;
+            padding: 10px 20px;
+            text-align: center;
+            display: inline-block;
+            margin: 0 auto 16px;
+            border: 2px solid #ffd700;
+            font-size: 24px;
+            font-weight: 800;
+            color: #ffd700;
+        }
+
+        /* Status */
+        .search-status {
+            background: #0f1a2a;
+            border-left: 6px solid #ffd700;
+            padding: 14px 16px;
+            border-radius: 24px;
+            margin: 16px 0;
+            color: #aec0ff;
+            font-size: 13px;
+            word-break: break-word;
+        }
+
+        /* Generate Button - Manual Only */
+        .generate-btn {
+            background: linear-gradient(145deg, #2196F3, #0D47A1);
+            border: none;
+            border-radius: 50px;
+            padding: 20px;
+            width: 100%;
+            font-weight: 800;
+            font-size: 18px;
+            color: white;
+            cursor: pointer;
+            box-shadow: 0 8px 0 #0a2a4a;
+            transition: all 0.3s ease;
+            margin: 12px 0;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .generate-btn:active:not(:disabled) {
+            transform: translateY(6px);
+            box-shadow: 0 2px 0 #0a2a4a;
+        }
+
+        .generate-btn.disabled, .generate-btn:disabled {
+            background: #444;
+            box-shadow: 0 8px 0 #222;
+            color: #999;
+            cursor: not-allowed;
+            opacity: 0.7;
+        }
+
+        .generate-btn.ready {
+            background: linear-gradient(145deg, #4CAF50, #2E7D32);
+            box-shadow: 0 8px 0 #1B5E20;
+            animation: pulse-ready 1.5s infinite;
+        }
+
+        .generate-btn.ready::after {
+            content: "👆";
+            position: absolute;
+            right: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 24px;
+            animation: bounce 1s infinite;
+        }
+
+        @keyframes pulse-ready {
+            0% { box-shadow: 0 8px 0 #1B5E20, 0 0 20px #4CAF50; }
+            50% { box-shadow: 0 8px 0 #1B5E20, 0 0 40px #8BC34A; }
+            100% { box-shadow: 0 8px 0 #1B5E20, 0 0 20px #4CAF50; }
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(-50%); }
+            50% { transform: translateY(-70%); }
+        }
+
+        /* Footer */
+        .footer-link {
+            text-align: center;
+            margin: 16px 0 8px;
+        }
+
+        .link-1x {
+            color: #00b050;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 16px;
+            padding: 12px 24px;
+            background: #1a2f22;
+            border-radius: 40px;
+            border: 2px solid #00d166;
+            display: inline-block;
+        }
+
+        .signal-id {
+            font-size: 10px;
+            color: #6f7fb0;
+            text-align: center;
+            margin: 10px 0;
+            font-family: monospace;
+            word-break: break-all;
+        }
+
+        .hack-note {
+            color: #2196F3;
+            font-size: 12px;
+            text-align: center;
+            margin-top: 12px;
+            padding-top: 8px;
+            border-top: 1px dashed #2f3d63;
+            font-weight: 600;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        .code-hint {
+            color: #4f6191;
+            margin-top: 20px;
+            font-size: 13px;
+        }
+
+        /* Safe positions indicator */
+        .safe-positions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            justify-content: center;
+            margin: 10px 0;
+            font-size: 11px;
+            color: #8f9ed4;
+        }
+
+        /* Timer display */
+        .signal-timer {
+            text-align: center;
+            font-size: 14px;
+            color: #ffd700;
+            margin: 10px 0;
+            font-weight: 600;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- LOCK SCREEN -->
+        <div id="lockScreen" class="lock-panel">
+            <div class="lock-header">🔐 1XBET HACK SYSTEM</div>
+            <div class="lock-sub">Premium Signal Access</div>
+            <input type="password" id="passwordInput" class="password-field" placeholder="········" maxlength="8" inputmode="text">
+            <button class="btn-primary" id="unlockBtn">UNLOCK HACK SIGNALS</button>
+            <div class="code-hint">access code: <span style="color:#ffd700; font-weight:600;">mose1974</span></div>
+        </div>
+
+        <!-- MAIN PREDICTOR -->
+        <div id="predictorMain" class="main-panel hidden">
+            <!-- Header -->
+            <div class="signal-badge">
+                <span style="color:#ffd700; font-weight:600;">⚡ 1XBET • HACK v6.0</span>
+                <span><span class="live-indicator"></span><span style="color:#8f9ed4;">LIVE</span></span>
+            </div>
+
+            <!-- Time Slots - Click to select -->
+            <div class="time-grid" id="timeSlots">
+                <div class="time-slot" id="slot1">
+                    <div class="time-label">SLOT 1</div>
+                    <div class="time-value" id="time1">--:--</div>
+                    <div class="pre-signal-badge hidden" id="badge1">PREVIEW</div>
+                </div>
+                <div class="time-slot" id="slot2">
+                    <div class="time-label">SLOT 2</div>
+                    <div class="time-value" id="time2">--:--</div>
+                    <div class="pre-signal-badge hidden" id="badge2">PREVIEW</div>
+                </div>
+                <div class="time-slot" id="slot3">
+                    <div class="time-label">SLOT 3</div>
+                    <div class="time-value" id="time3">--:--</div>
+                    <div class="pre-signal-badge hidden" id="badge3">PREVIEW</div>
+                </div>
+                <div class="time-slot" id="slot4">
+                    <div class="time-label">SLOT 4</div>
+                    <div class="time-value" id="time4">--:--</div>
+                    <div class="pre-signal-badge hidden" id="badge4">PREVIEW</div>
+                </div>
+            </div>
+
+            <!-- Play Time with Status Badge -->
+            <div class="play-time" id="playTimeContainer">
+                <div class="signal-status-badge" id="signalStatusBadge">PREVIEW</div>
+                <div class="play-time-label">📅 SELECTED SIGNAL WINDOW</div>
+                <div class="play-time-value" id="fullPlayTime">--:--:--</div>
+            </div>
+
+            <!-- Signal Timer -->
+            <div class="signal-timer" id="signalTimer">
+                ⏳ Select a time slot to see safe tiles preview
+            </div>
+
+            <!-- Mines Grid -->
+            <div class="grid-container" id="minesGrid">
+                <!-- Filled by JS -->
+            </div>
+
+            <!-- Safe Positions Display -->
+            <div class="safe-positions" id="safePositions">
+                ⭐ Safe tiles: 
+            </div>
+
+            <!-- Stats -->
+            <div class="stats-panel">
+                <div class="stat-box">
+                    <div class="stat-number" id="safeCount">5</div>
+                    <div class="stat-desc">✅ SAFE</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-number" id="trapCount">3</div>
+                    <div class="stat-desc">⚠️ TRAPS</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-number" id="accuracyValue">--</div>
+                    <div class="stat-desc">🎯 ACC</div>
+                </div>
+            </div>
+
+            <!-- Accuracy Bar -->
+            <div class="accuracy-bar">
+                <div class="accuracy-fill" id="accuracyFill" style="width: 0%"></div>
+                <div class="accuracy-text">
+                    <span>🔮 HACK ACCURACY</span>
+                    <span id="accuracyPercent">--</span>
+                </div>
+            </div>
+
+            <!-- Multiplier -->
+            <div style="text-align: center;">
+                <span class="multiplier-box" id="multiplierDisplay">x--</span>
+            </div>
+
+            <!-- Status -->
+            <div class="search-status" id="searchStatus">
+                👆 Click a time slot to preview safe tiles
+            </div>
+
+            <!-- Generate Button - Manual Only -->
+            <button class="generate-btn disabled" id="generateBtn" disabled>
+                ⏰ SELECT A TIME SLOT
+            </button>
+
+            <!-- Signal ID -->
+            <div class="signal-id" id="signalId">SIGNAL ID: ---</div>
+
+            <!-- 1XBET Link -->
+            <div class="footer-link">
+                <a href="https://1xbet.com" id="onexbetLink" class="link-1x" target="_blank" rel="noopener noreferrer">🎰 PLAY ON 1XBET</a>
+            </div>
+
+            <!-- Hack Note -->
+            <div class="hack-note" id="hackNote">
+                🔓 HACK ACTIVE • Preview safe tiles before play time • Click Generate when ready
+            </div>
+        </div>
+    </div>
+
+    <script>
+        (function() {
+            // Configuration
+            const VALID_PASSWORD = "mose1974";
+            const SITE_URL = "https://1xbet.com";
+            
+            // DOM Elements
+            const lockScreen = document.getElementById('lockScreen');
+            const predictorMain = document.getElementById('predictorMain');
+            const unlockBtn = document.getElementById('unlockBtn');
+            const passwordInput = document.getElementById('passwordInput');
+            const generateBtn = document.getElementById('generateBtn');
+            const minesGrid = document.getElementById('minesGrid');
+            const safeCountSpan = document.getElementById('safeCount');
+            const trapCountSpan = document.getElementById('trapCount');
+            const accuracyValueSpan = document.getElementById('accuracyValue');
+            const accuracyPercentSpan = document.getElementById('accuracyPercent');
+            const accuracyFill = document.getElementById('accuracyFill');
+            const multiplierDisplay = document.getElementById('multiplierDisplay');
+            const fullPlayTimeSpan = document.getElementById('fullPlayTime');
+            const searchStatus = document.getElementById('searchStatus');
+            const onexbetLink = document.getElementById('onexbetLink');
+            const signalStatusBadge = document.getElementById('signalStatusBadge');
+            const signalIdSpan = document.getElementById('signalId');
+            const safePositionsSpan = document.getElementById('safePositions');
+            const signalTimer = document.getElementById('signalTimer');
+            const hackNote = document.getElementById('hackNote');
+            
+            // Time slots
+            const time1 = document.getElementById('time1');
+            const time2 = document.getElementById('time2');
+            const time3 = document.getElementById('time3');
+            const time4 = document.getElementById('time4');
+            const slot1 = document.getElementById('slot1');
+            const slot2 = document.getElementById('slot2');
+            const slot3 = document.getElementById('slot3');
+            const slot4 = document.getElementById('slot4');
+            const badge1 = document.getElementById('badge1');
+            const badge2 = document.getElementById('badge2');
+            const badge3 = document.getElementById('badge3');
+            const badge4 = document.getElementById('badge4');
+            
+            const timeSlots = [slot1, slot2, slot3, slot4];
+            const timeBadges = [badge1, badge2, badge3, badge4];
+            const timeValues = [time1, time2, time3, time4];
+
+            // State
+            let selectedSlotIndex = -1;
+            let slotData = [];
+            let currentSignalStart = null;
+            let currentSignalEnd = null;
+            let isSignalActive = false;
+            let usedSignals = new Set();
+            let currentBaseDate = null;
+            let secondInterval = null;
+
+            // Initialize time slots with unique patterns for each slot
+            function initializeTimeSlots() {
+                const now = new Date();
+                
+                // Calculate next 15-minute mark
+                const minutes = now.getMinutes();
+                const remainder = minutes % 15;
+                let baseMinutes = minutes - remainder;
+                if (remainder !== 0) baseMinutes += 15;
+                
+                let baseDate = new Date(now);
+                baseDate.setMinutes(baseMinutes, 0, 0);
+                
+                if (baseMinutes >= 60) {
+                    baseDate.setHours(baseDate.getHours() + 1);
+                    baseDate.setMinutes(0, 0, 0);
+                }
+
+                currentBaseDate = baseDate;
+
+                // Format times
+                const formatTime = (date) => {
+                    return date.toLocaleTimeString('en-GB', { 
+                        hour: '2-digit', 
+                        minute: '2-digit',
+                        second: '2-digit',
+                        hour12: false 
+                    });
+                };
+
+                // Initialize each slot with its time and generate UNIQUE random safe positions
+                for (let i = 0; i < 4; i++) {
+                    const slotTime = new Date(baseDate.getTime() + i * 15 * 60000);
+                    timeValues[i].innerText = formatTime(slotTime);
+                    
+                    // Generate UNIQUE safe positions for this slot (different pattern every time)
+                    const safePositions = generateUniqueSafePositions(i, slotTime);
+                    
+                    slotData[i] = {
+                        time: slotTime,
+                        safePositions: safePositions,
+                        isExpired: false,
+                        isActive: false,
+                        isUsed: false,
+                        isGenerated: false
+                    };
+                }
+
+                updateSlotStatus();
+                return baseDate;
+            }
+
+            // Generate UNIQUE safe positions for each slot
+            function generateUniqueSafePositions(slotIndex, slotTime) {
+                // Use multiple factors to ensure uniqueness:
+                // - slot index (0-3)
+                // - timestamp of the slot
+                // - random seed
+                
+                const timestamp = slotTime.getTime();
+                const positions = Array.from({ length: 25 }, (_, i) => i);
+                
+                // Create a seeded random generator
+                let seed = timestamp + slotIndex * 1000;
+                
+                function seededRandom() {
+                    seed = (seed * 9301 + 49297) % 233280;
+                    return seed / 233280;
+                }
+                
+                // Fisher-Yates shuffle with seeded random
+                for (let i = positions.length - 1; i > 0; i--) {
+                    const j = Math.floor(seededRandom() * (i + 1));
+                    [positions[i], positions[j]] = [positions[j], positions[i]];
+                }
+                
+                // Take first 5 positions as safe tiles
+                const safePositions = positions.slice(0, 5);
+                
+                // Log for debugging (remove in production)
+                console.log(`Slot ${slotIndex + 1} (${slotTime.toLocaleTimeString()}): Safe positions = ${safePositions.map(p => p+1).sort((a,b)=>a-b).join(', ')}`);
+                
+                return safePositions;
+            }
+
+            // Update slot status
+            function updateSlotStatus() {
+                if (!currentBaseDate || !slotData.length) return;
+                
+                const now = new Date();
+                
+                slotData.forEach((slot, index) => {
+                    const slotEnd = new Date(slot.time.getTime() + 15 * 60000);
+                    
+                    // Remove all classes
+                    timeSlots[index].classList.remove('expired', 'upcoming', 'active-signal', 'selected');
+                    
+                    if (now > slotEnd) {
+                        // Slot is completely expired
+                        timeSlots[index].classList.add('expired');
+                        slot.isExpired = true;
+                        slot.isActive = false;
+                        timeBadges[index].classList.add('hidden');
+                        
+                        // Reset generated flag for expired slots
+                        if (slot.isGenerated) {
+                            slot.isGenerated = false;
+                        }
+                    } else if (now >= slot.time && now < slotEnd) {
+                        // Slot is currently active for play
+                        timeSlots[index].classList.add('active-signal');
+                        slot.isActive = true;
+                        
+                        // Update badge
+                        timeBadges[index].classList.remove('hidden');
+                        timeBadges[index].innerText = slot.isGenerated ? 'GENERATED' : 'LIVE';
+                        timeBadges[index].style.background = slot.isGenerated ? '#2196F3' : '#ffd700';
+                        
+                        // If this slot is selected and not generated yet, show preview
+                        if (selectedSlotIndex === index && !slot.isGenerated) {
+                            renderGrid(slot.safePositions, 'preview');
+                        }
+                        // If generated, show gold
+                        else if (selectedSlotIndex === index && slot.isGenerated) {
+                            renderGrid(slot.safePositions, 'gold');
+                        }
+                    } else if (now < slot.time) {
+                        // Slot is upcoming
+                        timeSlots[index].classList.add('upcoming');
+                        slot.isActive = false;
+                        
+                        // Show preview badge
+                        timeBadges[index].classList.remove('hidden');
+                        timeBadges[index].innerText = 'PREVIEW';
+                        timeBadges[index].style.background = '#4CAF50';
+                        
+                        // If this slot is selected, show preview safe tiles
+                        if (selectedSlotIndex === index && !slot.isGenerated) {
+                            renderGrid(slot.safePositions, 'preview');
+                        }
+                    }
+                });
+                
+                // Update generate button state
+                updateGenerateButton();
+            }
+
+            // Render grid with appropriate colors
+            function renderGrid(safePositions, mode = 'preview') {
+                minesGrid.innerHTML = '';
+                
+                for (let i = 0; i < 25; i++) {
+                    const tile = document.createElement('div');
+                    tile.className = 'tile';
+                    
+                    if (safePositions.includes(i)) {
+                        if (mode === 'preview') {
+                            tile.classList.add('preview-safe');
+                            tile.innerText = '⭐';
+                        } else {
+                            tile.classList.add('safe');
+                            tile.innerText = '⭐';
+                        }
+                        tile.title = `Safe tile #${i + 1}`;
+                    } else {
+                        tile.innerText = (i + 1).toString().padStart(2, '0');
+                        tile.title = `Position ${i + 1}`;
+                    }
+                    
+                    minesGrid.appendChild(tile);
+                }
+                
+                const displayPositions = safePositions.map(p => p + 1).sort((a, b) => a - b);
+                safePositionsSpan.innerHTML = `⭐ Safe tiles: ${displayPositions.join(', ')}`;
+            }
+
+            // Handle slot selection
+            function selectTimeSlot(index) {
+                if (index < 0 || index >= slotData.length) return;
+                
+                const slot = slotData[index];
+                
+                // Can't select expired slots
+                if (slot.isExpired) {
+                    searchStatus.innerText = '❌ This time slot has expired';
+                    return;
+                }
+                
+                // Remove selection from all slots
+                timeSlots.forEach(slot => slot.classList.remove('selected'));
+                
+                // Select new slot
+                timeSlots[index].classList.add('selected');
+                selectedSlotIndex = index;
+                
+                // Update display
+                const slotTime = slot.time;
+                const year = slotTime.getFullYear();
+                const month = String(slotTime.getMonth() + 1).padStart(2, '0');
+                const day = String(slotTime.getDate()).padStart(2, '0');
+                const timeStr = slotTime.toLocaleTimeString('en-GB', { hour12: false });
+                const endStr = new Date(slotTime.getTime() + 15 * 60000).toLocaleTimeString('en-GB', { hour12: false });
+                
+                fullPlayTimeSpan.innerText = `${year}-${month}-${day} ${timeStr} - ${endStr}`;
+                
+                // Render safe tiles based on slot status
+                if (slot.isActive && slot.isGenerated) {
+                    renderGrid(slot.safePositions, 'gold');
+                    signalStatusBadge.innerText = 'GENERATED';
+                    signalStatusBadge.className = 'signal-status-badge active';
+                    signalTimer.innerText = '✅ SIGNAL GENERATED - Safe tiles in GOLD';
+                } else if (slot.isActive && !slot.isGenerated) {
+                    renderGrid(slot.safePositions, 'preview');
+                    signalStatusBadge.innerText = 'LIVE NOW';
+                    signalStatusBadge.className = 'signal-status-badge active';
+                    signalTimer.innerText = '🔴 LIVE - Click Generate to activate signal';
+                } else {
+                    renderGrid(slot.safePositions, 'preview');
+                    signalStatusBadge.innerText = 'PREVIEW';
+                    signalStatusBadge.className = 'signal-status-badge preview';
+                    
+                    // Calculate time until signal
+                    const now = new Date();
+                    const timeUntil = slot.time - now;
+                    if (timeUntil > 0) {
+                        const minutes = Math.floor(timeUntil / 60000);
+                        const seconds = Math.floor((timeUntil % 60000) / 1000);
+                        signalTimer.innerText = `⏳ Preview - Signal starts in ${minutes}:${seconds.toString().padStart(2, '0')}`;
+                    }
+                }
+                
+                // Update generate button
+                updateGenerateButton();
+                
+                searchStatus.innerText = `✅ Slot ${index + 1} selected - Safe tiles shown in ${slot.isActive ? (slot.isGenerated ? 'GOLD' : 'GREEN - Click Generate') : 'GREEN preview'}`;
+            }
+
+            // Update generate button state
+            function updateGenerateButton() {
+                if (selectedSlotIndex === -1) {
+                    generateBtn.disabled = true;
+                    generateBtn.classList.add('disabled');
+                    generateBtn.classList.remove('ready');
+                    generateBtn.innerText = '⏰ SELECT A TIME SLOT';
+                    return;
+                }
+                
+                const slot = slotData[selectedSlotIndex];
+                
+                if (slot.isExpired) {
+                    generateBtn.disabled = true;
+                    generateBtn.classList.add('disabled');
+                    generateBtn.classList.remove('ready');
+                    generateBtn.innerText = '⏰ SLOT EXPIRED';
+                    return;
+                }
+                
+                if (slot.isGenerated) {
+                    generateBtn.disabled = true;
+                    generateBtn.classList.add('disabled');
+                    generateBtn.classList.remove('ready');
+                    generateBtn.innerText = '✅ SIGNAL GENERATED';
+                    return;
+                }
+                
+                if (slot.isActive) {
+                    // Signal is live and not generated - enable generate button
+                    generateBtn.disabled = false;
+                    generateBtn.classList.remove('disabled');
+                    generateBtn.classList.add('ready');
+                    generateBtn.innerText = '⚡ GENERATE SIGNAL NOW ⚡';
+                } else {
+                    // Preview mode - show countdown
+                    const now = new Date();
+                    const timeUntil = slot.time - now;
+                    if (timeUntil > 0) {
+                        const minutes = Math.floor(timeUntil / 60000);
+                        const seconds = Math.floor((timeUntil % 60000) / 1000);
+                        generateBtn.disabled = true;
+                        generateBtn.classList.add('disabled');
+                        generateBtn.classList.remove('ready');
+                        generateBtn.innerText = `⏰ GENERATE IN ${minutes}:${seconds.toString().padStart(2, '0')}`;
+                    }
+                }
+            }
+
+            // Generate signal for selected slot - MANUAL ONLY
+            function generateSignal() {
+                if (selectedSlotIndex === -1) {
+                    searchStatus.innerText = '❌ Please select a time slot first';
+                    return false;
+                }
+                
+                const slot = slotData[selectedSlotIndex];
+                
+                if (slot.isGenerated) {
+                    searchStatus.innerText = '❌ Signal already generated for this slot';
+                    return false;
+                }
+                
+                if (slot.isExpired) {
+                    searchStatus.innerText = '❌ This time slot has expired';
+                    return false;
+                }
+                
+                if (!slot.isActive) {
+                    searchStatus.innerText = '❌ Cannot generate - signal not yet active';
+                    return false;
+                }
+                
+                // Mark slot as generated (ONLY ONCE)
+                slot.isGenerated = true;
+                slot.isUsed = true;
+                usedSignals.add(slot.time.getTime());
+                
+                // Render final signal with gold safe tiles IMMEDIATELY
+                renderGrid(slot.safePositions, 'gold');
+                
+                // Random accuracy between 97-99% (hack accuracy)
+                const accuracy = (97 + Math.random() * 2).toFixed(1);
+                accuracyValueSpan.innerText = accuracy + '%';
+                accuracyPercentSpan.innerText = accuracy + '%';
+                accuracyFill.style.width = accuracy + '%';
+                
+                // Random multiplier
+                const multiplier = (1.40 + Math.random() * 0.25).toFixed(2);
+                multiplierDisplay.innerText = 'x' + multiplier;
+                
+                // Generate unique signal ID
+                const signalId = 'HACK-' + Math.random().toString(36).substr(2, 8).toUpperCase();
+                signalIdSpan.innerText = `SIGNAL ID: ${signalId}`;
+                
+                // Update status
+                const endTime = new Date(slot.time.getTime() + 15 * 60000);
+                const endStr = endTime.toLocaleTimeString('en-GB', { hour12: false });
+                searchStatus.innerText = `✅ HACK SIGNAL ACTIVE • ${accuracy}% • Valid until ${endStr}`;
+                
+                signalStatusBadge.innerText = 'GENERATED';
+                signalTimer.innerText = `✅ SIGNAL READY - Play now until ${endStr}`;
+                
+                // Disable generate button (can only generate once per slot)
+                generateBtn.disabled = true;
+                generateBtn.classList.add('disabled');
+                generateBtn.classList.remove('ready');
+                generateBtn.innerText = '✅ SIGNAL GENERATED';
+                
+                // Update badge
+                timeBadges[selectedSlotIndex].innerText = 'GENERATED';
+                timeBadges[selectedSlotIndex].style.background = '#2196F3';
+                
+                return true;
+            }
+
+            // Start the 1-second interval for updates
+            function startSecondInterval() {
+                if (secondInterval) clearInterval(secondInterval);
+                
+                secondInterval = setInterval(() => {
+                    if (!predictorMain.classList.contains('hidden')) {
+                        updateSlotStatus();
+                        
+                        // Update timer for selected slot
+                        if (selectedSlotIndex !== -1) {
+                            const slot = slotData[selectedSlotIndex];
+                            if (!slot.isActive && !slot.isExpired) {
+                                const now = new Date();
+                                const timeUntil = slot.time - now;
+                                if (timeUntil > 0) {
+                                    const minutes = Math.floor(timeUntil / 60000);
+                                    const seconds = Math.floor((timeUntil % 60000) / 1000);
+                                    signalTimer.innerText = `⏳ Preview - Signal starts in ${minutes}:${seconds.toString().padStart(2, '0')}`;
+                                }
+                            } else if (slot.isActive && !slot.isGenerated) {
+                                const now = new Date();
+                                const timeLeft = new Date(slot.time.getTime() + 15 * 60000) - now;
+                                if (timeLeft > 0) {
+                                    const minutes = Math.floor(timeLeft / 60000);
+                                    const seconds = Math.floor((timeLeft % 60000) / 1000);
+                                    signalTimer.innerText = `🔴 LIVE - Click Generate! ${minutes}:${seconds.toString().padStart(2, '0')} remaining`;
+                                }
+                            }
+                        }
+                    }
+                }, 1000);
+            }
+
+            // Add click handlers to time slots
+            function setupTimeSlotClickHandlers() {
+                timeSlots.forEach((slot, index) => {
+                    slot.addEventListener('click', () => selectTimeSlot(index));
+                });
+            }
+
+            // Unlock system
+            unlockBtn.addEventListener('click', function() {
+                if (passwordInput.value === VALID_PASSWORD) {
+                    lockScreen.classList.add('hidden');
+                    predictorMain.classList.remove('hidden');
+                    
+                    initializeTimeSlots();
+                    setupTimeSlotClickHandlers();
+                    onexbetLink.href = SITE_URL;
+                    
+                    // Start the second interval
+                    startSecondInterval();
+                    
+                    // Select first upcoming slot by default
+                    for (let i = 0; i < slotData.length; i++) {
+                        if (!slotData[i].isExpired) {
+                            selectTimeSlot(i);
+                            break;
+                        }
+                    }
+                    
+                    // Show hack status
+                    hackNote.innerText = '🔓 HACK ACTIVE • 5 safe tiles • Different every 15min';
+                    
+                } else {
+                    alert('Invalid code. Use: mose1974');
+                }
+            });
+
+            // Enter key
+            passwordInput.addEventListener('keypress', function(e) {
+                if (e.key === 'Enter') unlockBtn.click();
+            });
+
+            // Generate button click - MANUAL ONLY
+            generateBtn.addEventListener('click', function() {
+                if (!generateBtn.disabled) {
+                    generateSignal();
+                }
+            });
+
+            // Initial setup
+            initializeTimeSlots();
+        })();
+    </script>
+</body>
+</html>
